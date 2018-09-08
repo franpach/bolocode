@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Nivel 3 - a robot by Francisco Javier Pacheco Herranz y Javier Romero Pérez
  * 
- * The robot runs around the map in circles, and then crosses it and turns back to its original circuit
+ * The robot locks an enemy when scanned and follows it while shooting
  */
 public class NOMBRECLASE extends AdvancedRobot
 {
@@ -17,10 +17,6 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * run: Prueba's default behavior
 	 */
 	public void run() {
-		// Initialization of the robot should be put here
-
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
 
 		setColors(COLORBODY,COLORGUN,COLORRADAR); // body,gun,radar
 
@@ -142,7 +138,7 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// Replace the next line with any behavior you would like
+		
 		enemyAbsoluteBearing = getHeadingRadians() + e.getBearingRadians(); 
 		timeSinceLastScan = 0; 
 		if(e.getDistance() <= 300)
@@ -159,9 +155,6 @@ public class NOMBRECLASE extends AdvancedRobot
 				}
 			
 		}
-		//else {
-		//	fire(0.1);
-		//}
 	}
 
 	/**
@@ -195,18 +188,10 @@ public class NOMBRECLASE extends AdvancedRobot
 	
 	public void doScanner() {
 
-		timeSinceLastScan++; /*increment timeSinceLastScan if no enemy bot is detected
-		for 3 ticks(lock on enemy slipped)
-
-		therefore radar is allowed to spin again to search for a new enemy bot 
-		*/ 
+		timeSinceLastScan++; 
 		double radarOffset = Double.POSITIVE_INFINITY; 
 		
 		if(timeSinceLastScan < 3) {
-
-		/*calculates how much the radar has to move to hold the lock on the enemy bot
-		*/
-
 			radarOffset = robocode.util.Utils.normalRelativeAngle(getRadarHeadingRadians()
 			- enemyAbsoluteBearing);
 	
@@ -214,16 +199,12 @@ public class NOMBRECLASE extends AdvancedRobot
 	
 			}
 	
-			setTurnRadarLeftRadians(radarOffset); //turns radar for the amount of offset
-			//angle to keep lock on enemy bot
-			
+			setTurnRadarLeftRadians(radarOffset); 
 	
 			setTurnGunLeftRadians(getGunHeadingRadians() - getRadarHeadingRadians());
-			//turns gun to aim towards enemy bot locked onto
 			setTurnLeft(radarOffset);
 			ahead(10);
 		}
-	//radar movement direction determined by direction of movement of enemy robot
 
 	private int sign(double v) {
 		return v > 0 ? 1 : -1;
