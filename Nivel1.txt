@@ -16,10 +16,6 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * run: Prueba's default behavior
 	 */
 	public void run() {
-		// Initialization of the robot should be put here
-
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
 
 		setColors(COLORBODY,COLORGUN,COLORRADAR); // body,gun,radar
 
@@ -149,7 +145,7 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// Replace the next line with any behavior you would like
+		
 		fire(1);
 	}
 
@@ -157,7 +153,7 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
-		// Replace the next line with any behavior you would like
+		
 		turnLeft(180);
 	}
 	
@@ -165,21 +161,8 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * onHitWall: What to do when you hit a wall
 	 */
 	public void onHitWall(HitWallEvent e) {
-		// Replace the next line with any behavior you would like
+		
 		turnLeft(180);
-		/*	int heading = getHeading();
-				if(0 < heading < 90) {	// Facing north 
-					turnRight(90);
-				}
-				else if( 90 <= heading < 180) { // Facing East
-					turnRight(90);
-				}
-				else if (180 <= heading < 270) { // Facing South
-					turnRight(90);
-				}
-				else { // Facing West
-					turnRight(90);
-			}*/
 	}	
 
 	/*

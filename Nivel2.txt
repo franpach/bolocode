@@ -15,10 +15,6 @@ public class NOMBRECLASE extends AdvancedRobot
 	 * run: Prueba's default behavior
 	 */
 	public void run() {
-		// Initialization of the robot should be put here
-
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
 
 		setColors(COLORBODY,COLORGUN,COLORRADAR); // body,gun,radar
 
