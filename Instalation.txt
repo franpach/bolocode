@@ -1,0 +1,117 @@
+Manual de instalación de Bolotweet 
+
+Autor: Francisco Javier Pacheco Herranz
+
+--------------
+PREREQUISITOS:
+--------------
+
+0. Funciona sobre Ubuntu 16.04.
+
+
+1. Apache: Obtenible mediante consola de comandos:
+
+	sudo apt-get install apache2
+
+2. PHP 5.6: Además de esta versión de PHP es necesario instalar una serie de paquetes.
+Para cada uno se va a mostrar cómo obtenerlos, la mayoría proceden de este repositorio:
+
+http://ppa.launchpad.net/ondrej/php/ubuntu/pool/main/p/php5.6/
+
+La instalación de PHP y sus paquetes irán generando una serie de dependencias, que serán 
+advertidas al intentar instalar PHP, descargado desde el propio repositorio e instalado mediante
+el siguiente comando:
+
+sudo dpkg -i php5.6_5.6.34-1+ubuntu16.04.1+deb.sury.org+1_all.deb
+
+Hay dos dependencias que tienen que ser tratadas de manera especial. Dos librerías que se obtienen
+de lugares distintos al repositorio, y que tienen que ser instaladas en el siguiente orden:
+		
+		-libssl1.1: https://packages.ubuntu.com/bionic/amd64/libssl1.1/download (e instalada vía dpkg)
+		-php-common: apt-get instal php-common
+
+Statusnet requiere una serie de librerías listadas a continuación (lista obtenida del manual de instalación de Statusnet):
+
+- Curl. This is for fetching files by HTTP.
+- XMLWriter. This is for formatting XML and HTML output. (Contenida en la libería XML)
+- MySQL. For accessing the database.
+- GD. For scaling down avatar images.
+- mbstring. For handling Unicode (UTF-8) encoded strings.
+
+3. MySQL 5.5.59: Se descarga en el siguiente enlace:
+
+https://dev.mysql.com/downloads/file/?id=474478
+
+y se puede instalar siguiendo los siguientes pasos de:
+
+https://askubuntu.com/questions/763240/is-it-possible-to-install-mysql-5-5-or-5-6-on-ubuntu-16-04
+
+Ir a INSTALACIÓN BOLOTWEET. Si se da el error descrito a continuación, volver aquí.
+
+Si al proseguir con la instalación del sitio salta un error DB Error: Connect failed, hay que ejecutar los siguientes pasos:
+
+	-Abrir el archivo /extlib/DB/mysqli.php (de la carpeta de Bolotweet)
+	-Redefinir la variable connection:
+
+		$this->connection = @mysqli_connect(
+            	$dsn['hostspec'],
+            	$dsn['username'],
+            	$dsn['password'],
+            	$dsn['database'],
+            	$dsn['port'],
+            	$dsn['socket']
+        	);
+
+    Los valores port y socket se quedan sin definir. Hay que sustituirlos por los valores obtenidos de la siguiente manera:
+
+    		-port: ejecutar SHOW GLOBAL VARIABLES LIKE 'PORT'; en la shell de MySQL.
+    		-socket: ejecutar netstat -ln | awk '/mysql(.*)?\.sock/ { print $9 } en un terminal.
+
+    -La variable connection quedaría de la siguiente manera:
+
+    		 $this->connection = @mysqli_connect(
+            	$dsn['hostspec'],
+            	$dsn['username'],
+            	$dsn['password'],
+            	$dsn['database'],
+            	3306,
+            	"/tmp/mysql.sock"
+        	);
+
+---------------------
+INSTALACIÓN BOLOTWEET
+---------------------
+
+Para el resto de la instalación, seguir los pasos descritos en el manual de instalación de Bolotweet:
+
+https://github.com/Grasia/bolotweet/blob/master/INSTALL
+
+Siguiendo los pasos anteriormente descritos para la instalación de PHP y MySQL.
+
+-------------------
+INSTALACIÓN PLUGIN
+-------------------
+
+Para instalar un plugin en Statusnet se han de seguir los siguientes pasos:
+	
+	-En el archivo config.php añadir la línea addPlugin('Robocode');
+	-Los plugins se han de instalar en la carpeta local/plugins/. En dicho directorio añadir la carpeta Robocode provista en Github.
+	-Sobreescribir el contenido de la carpeta Grades por el provisto en Github, pues su funcionalidad se ha visto modificada para el funcionamiento
+	del plugin desarrollado.
+
+----------------------
+SCRIPTS ADMINISTRACIÓN
+----------------------
+
+Sobreescribir el contenido de la carpeta /scripts por el de Github.
+
+---------
+ROBOCODE
+---------
+
+Instalar Robocode de aquí:
+
+https://sourceforge.net/projects/robocode/files/
+
+En el directorio que se cree, copiar la carpeta RoboPlugin.
+
