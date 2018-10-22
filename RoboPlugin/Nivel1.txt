@@ -1,0 +1,197 @@
+import robocode.*;
+import static robocode.util.Utils.normalRelativeAngleDegrees;
+import java.awt.*;
+
+// API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
+
+/**
+ * Nivel1 - a robot by Francisco Javier Pacheco Herranz y Javier Romero Pérez
+ * 
+ * The robot runs around the map in circles, and then crosses it and turns back to its original circuit
+ */
+
+public class NOMBRECLASE extends AdvancedRobot
+{
+	/**
+	 * run: Prueba's default behavior
+	 */
+	public void run() {
+		// Initialization of the robot should be put here
+
+		// After trying out your robot, try uncommenting the import at the top,
+		// and the next line:
+
+		setColors(COLORBODY,COLORGUN,COLORRADAR); // body,gun,radar
+
+		// Battlefield size
+		double battleFieldWidth = getBattleFieldWidth();
+		double battleFieldHeight = getBattleFieldHeight();
+		
+		// Ahead distance factor 
+		// Robot will move forward this distance, calculated depending on the battlefield size
+		double aheadDistance = 0;
+		
+		// Direction (in degrees) the robot is facing
+		double heading = 0;
+		
+		//(x,y) robot position
+		double x = 0;
+		double y = 0;
+		
+		// Remaining distance to wall
+		double remainingHeight = 0;
+		double remainingWidth = 0; 	
+		double closestWall = 0;
+		
+		// Robot size
+		double robotHeight = getHeight();
+		double robotWidth = getWidth();
+		
+		// Quadrant in which the robot is
+		/*
+		 * 				_____________
+		 * 				|	0 |	1	|
+		 * 				|_____|_____|
+		 * 				|	3 |	2	|
+		 * 				|_____|_____|
+		 * 
+		 * 
+		 */
+		int quadrant = 0;
+		
+		// Battlefield loops counter
+		int loopsCounter = 0;
+		
+		// Robot main loop
+		while(true) {
+			x = getX(); // We supose that the (x,y) position is the central pixel of the robot
+			y = getY();
+			heading = getHeading();
+			
+			if(heading >= 0 && heading < 90) {	// Facing northeast 
+				remainingHeight = battleFieldHeight - y;
+				remainingWidth = battleFieldWidth - x;
+				if (remainingHeight < 50 || remainingWidth < 50) {
+					closestWall = Math.min(remainingHeight, remainingWidth);
+					if(closestWall == remainingHeight) 
+						turnRight(60);
+					else 
+						turnLeft(60);
+					++loopsCounter;
+					if (loopsCounter > 4) {
+						loopsCounter = 0;
+						turnLeft(180);
+					}
+				}
+				else
+					ahead(30);	
+			}
+			else if(heading >= 90 && heading < 180) { // Facing southeast
+				remainingHeight = y;
+				remainingWidth = battleFieldWidth - x;
+				if (remainingHeight < 50 || remainingWidth < 50) {
+					closestWall = Math.min(remainingHeight, remainingWidth);
+					if(closestWall == remainingHeight) 
+						turnLeft(60);
+					else 
+						turnRight(60);
+					++loopsCounter;
+					if (loopsCounter > 4) {
+						loopsCounter = 0;
+						turnLeft(180);
+					}
+				}
+				else
+					ahead(30);
+			}
+			
+			else if (heading >= 180 && heading < 270) { // Facing southwest
+				remainingHeight = y;
+				remainingWidth = x;
+				if (remainingHeight < 50 || remainingWidth < 50) {
+					closestWall = Math.min(remainingHeight, remainingWidth);
+					if(closestWall == remainingHeight) 
+						turnRight(60);
+					else
+						turnLeft(60);
+					++loopsCounter;
+					if (loopsCounter > 4) {
+						loopsCounter = 0;
+						turnLeft(180);
+					}
+				}
+				else
+					ahead(30);
+			}
+			else { // Facing northwest
+				remainingHeight = battleFieldHeight - y;
+				remainingWidth = x;
+				if (remainingHeight < 50 || remainingWidth < 50) {
+					closestWall = Math.min(remainingHeight, remainingWidth);
+					if(closestWall == remainingHeight) 
+						turnLeft(60);
+					else 
+						turnRight(60);
+					++loopsCounter;
+					if (loopsCounter > 4) {
+						loopsCounter = 0;
+						turnLeft(180);
+					}
+				}
+				else
+					ahead(30);
+			}
+			
+		}
+	}
+
+	/**
+	 * onScannedRobot: What to do when you see another robot
+	 */
+	public void onScannedRobot(ScannedRobotEvent e) {
+		// Replace the next line with any behavior you would like
+		fire(1);
+	}
+
+	/**
+	 * onHitByBullet: What to do when you're hit by a bullet
+	 */
+	public void onHitByBullet(HitByBulletEvent e) {
+		// Replace the next line with any behavior you would like
+		turnLeft(180);
+	}
+	
+	/**
+	 * onHitWall: What to do when you hit a wall
+	 */
+	public void onHitWall(HitWallEvent e) {
+		// Replace the next line with any behavior you would like
+		turnLeft(180);
+		/*	int heading = getHeading();
+				if(0 < heading < 90) {	// Facing north 
+					turnRight(90);
+				}
+				else if( 90 <= heading < 180) { // Facing East
+					turnRight(90);
+				}
+				else if (180 <= heading < 270) { // Facing South
+					turnRight(90);
+				}
+				else { // Facing West
+					turnRight(90);
+			}*/
+	}	
+
+	/*
+	 * onHitRobot: What to do when you hit an oponent
+	 */
+	public void onHitRobot(HitRobotEvent e){
+		
+		double bearing = e.getBearing();
+		turnRight(bearing*-1);
+		ahead(10);
+	}
+}
+
+
+
