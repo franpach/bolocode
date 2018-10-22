@@ -1,0 +1,439 @@
+/**
+ * 
+ * BoloTweet 2.0
+ *
+ * @author   Alvaro Ortego <alvorteg@ucm.es>
+ *
+ */
+
+#showstream .notice-current-grade .notice-current-grade-value {
+    float: left;
+    position: relative;
+    top:0px;
+    padding: 2px;
+    margin-right: 11px;
+    border-color: #dcdcdc;
+    border-style:solid;
+    border-width:1px;
+    text-align:center;
+    display: inline-block;
+    text-wrap:lowercase;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 0px;
+    background-color: #B8D9B4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 44px;
+}
+
+.notice-current-grade .notice-current-grade-value {
+    float: left;
+    position: relative;
+    padding: 2px;
+    top: 60px;
+    border-color: #dcdcdc;
+    border-style:solid;
+    border-width:1px;
+    text-align:center;
+    display: inline-block;
+    text-wrap:lowercase;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 35px;
+    background-color: #B8D9B4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 44px;
+}
+
+.threaded-replies .notice-current-grade .notice-current-grade-value {
+
+    padding: 1px;
+    top: 36px;
+    width: 20px;
+}
+
+.label-grader-div .label-grader {
+    float: left;
+    position: relative;
+    padding: 2px;
+    top: 60px;
+    border-color: #dcdcdc;
+    border-style:solid;
+    border-width:1px;
+    text-align:center;
+    display: inline-block;
+    text-wrap:lowercase;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 35px;
+    background-color: #B9C3FA;
+}
+
+.notice-grades .form_grade#grade-0 input.submit{
+    background-position: 0 100;
+}
+.notice-grades .form_grade#grade-1 input.submit{
+    background-position: 100 100;
+}
+.notice-grades .form_grade#grade-2 input.submit{
+    background-position: 200 100;
+}
+.notice-grades .form_grade#grade-3 input.submit{
+    background-position: 300 100;
+}
+.notice-grades {
+    position:relative;
+    font-size:0.5em;
+    float:right;
+    margin-top:3px;
+    margin-right:4px;
+    width: 400px;
+    box-lines: single;
+    box-direction: normal;
+    box-align: center;
+}
+.notice-grades a {
+    float:left;
+}
+
+.notice-grades .form_grade,
+.notice-grades .repeated {
+    float:right;
+}
+
+.notice-grades input,
+.notice-grades a,
+.notice-grades .repeated {
+    outline:none;
+}
+.notice-grades input.submit {
+    display:list-item;
+
+}
+.notice-grades .form_grade ol {
+    list-style-position: outside;
+}
+
+
+.notice-grades .form_grade input.submit {
+    width:50px;
+    height:30px;
+    font: "Arial Black";
+    font-size:12;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius:23;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+}
+.notice-grades .form_grade legend{
+    display:none;
+}
+.notice-grades .form_grade fieldset{
+    border:0;
+    padding:0;
+}
+.notice-grades a,
+.notice-grades .repeated {
+    width:16px;
+    height:16px;
+}
+
+.notices div.notice-grades {
+    opacity:0.4;
+}
+
+.notices li:hover div.notice-grades
+{
+    opacity:1;
+}
+
+#birrete-grades{
+
+    float: left;
+    z-index: 100;
+    position: absolute;
+    left: -9px;
+    rotation: -18deg;
+    -moz-transform: rotate(-18deg);
+    -webkit-transform: rotate(-18deg);
+
+}
+
+.notice-source-activity #birrete-grades, #showstream #birrete-grades{
+
+    display:none;
+}
+
+#label-profesor{
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    font-weight: 700;
+    background-color: rgb(205, 209, 221);
+    padding: 5px 2px 4px;
+}
+
+#birrete-profile{
+
+    position: absolute;
+    top: 4px;
+    left: 6px;
+
+}
+
+.notice-grades-hidden {
+
+    display: none;
+}
+
+.notice-options .notice-modify-grade{
+
+    background-image: url("modify-grade.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 0px -1px;
+
+
+}
+
+.notice-options .notice-modify-grade-hidden{
+
+    display:none;
+}
+
+.temp-text-grades{
+
+    margin-left: 35%;
+    float: left;
+    font-weight: bold;
+}
+
+.div-with-grades-hidden{
+
+    display:none;
+
+}
+
+.div-with-grades{
+
+    position: relative;
+    float: right;
+    background-color: rgb(184, 217, 180);
+    border-radius: 4px;
+    padding: 4px;
+    top: 8px;
+    border: 1px solid;
+    border-color: rgb(220, 220, 220);
+    font-size: 10px;
+}
+
+.grade-report-group{
+
+    display:inline-block;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:340px;
+}
+
+.grade-export-report{
+
+    float:right;
+    margin-right: 6px;
+    padding: 4px;
+    height: 1.4em;
+    color:#fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #5298DF;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+
+    background: #7abcff; /* Old browsers */
+    background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+
+}
+
+.grade-show-report{
+
+    float:right;
+    padding: 4px;
+    height: 1.4em;
+    color:#fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #d7621c;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #FB6104;
+    background: -moz-linear-gradient(top, #ff9d63 0%, #fb6104 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9d63), color-stop(100%,#fb6104));
+    background: -webkit-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    background: -o-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    background: -ms-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d63', endColorstr='#fb6104',GradientType=0 );
+    background: linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+
+
+}
+
+.grade-show-report:hover, .grade-export-report:hover{
+
+    text-decoration: none;
+    color:#fff;
+}
+
+.grade-reports-group-underline{
+
+    border-bottom:1px dotted #9999CC;
+}
+
+
+.grade-report-group-link:hover{
+
+    text-decoration: none;
+    color:rgb(62, 62, 140);
+
+}
+.report-group-hidden{
+
+    display:none;
+}
+
+.options-text-csv{
+
+    display: inline-block;
+
+}
+
+#grade-export-separator{
+
+    max-width: 50px;
+    margin-left: 10px;
+}
+
+#grade-export-delimiter{
+
+    max-width: 50px;
+    margin-left: 20px;
+}
+
+#grade-export-button{
+
+    height: 1.8em;
+    color:#fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border: 1px solid #d7621c;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #FB6104;
+    background: -moz-linear-gradient(top, #ff9d63 0%, #fb6104 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff9d63), color-stop(100%,#fb6104));
+    background: -webkit-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    background: -o-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    background: -ms-linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9d63', endColorstr='#fb6104',GradientType=0 );
+    background: linear-gradient(top, #ff9d63 0%,#fb6104 100%);
+    margin-left: 37%;
+}
+
+.hint-csv-text{
+
+    font-size: 10px;
+    width: 38%;
+    background-color: #F5D5D5;
+    padding:1px;
+    border-radius: 3px;
+    margin-top: -15px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.grade-report-groupmembers-item img{
+
+    margin-right: 8px;
+}
+
+.user-link-report:hover{
+
+    text-decoration: none;
+    color: gray;
+}
+
+#entity_statistics .statistics-span{
+
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.form_make_grader input.submit{
+
+    background-image: url("but_birrete.png");
+    background-position: 5px;
+    background-repeat: no-repeat;
+}
+
+.member-list-admin ul.profiles div.entity_actions {
+
+    float: left;
+    width: 100%;
+    margin-left: 0px;
+
+}
+
+.member-list-admin ul.profiles div.entity_actions li{
+
+    float: left;
+    width: 116px;
+    margin-left: 8px;
+    margin-bottom: 0px;
+}
+
+.member-list-admin ul.profiles div.entity_actions li:first-child{
+
+    margin-left: 0px;
+}
+
+
+.member-list-admin ul.profiles div.entity_profile{
+
+    width: 100%;
+}
+
+.member-list-admin ul.profiles > li {
+
+    margin-bottom: 0px;
+    padding-top: 10px;
+}
+
+.member-list-admin ul.profiles > li+li {
+
+    border-top: solid 1px #DBDBDB;
+}
+
+.div-group-report {
+    
+    margin-bottom: 20px;
+}
